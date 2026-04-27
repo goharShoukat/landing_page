@@ -46,9 +46,9 @@ In response, our 2025 roadmap centered on four tightly connected capability area
 In 2025, we focused on giving teams explicit control over retrieval quality as applications moved beyond basic semantic search. Our new capabilities make relevance more explainable, tunable, and aligned with real user intent, especially in agentic and hybrid search workflows.
 
 **Related enhancements:**         
-• [Score-Boosting Reranking](https://qdrant.tech/documentation/concepts/search-relevance/#score-boosting) allowing the blending of vector similarity with business signals  
-• [Full-Text Filtering](https://qdrant.tech/documentation/concepts/filtering/) which brought native multilingual tokenization, stemming, and phrase matching  
-• [ACORN algorithm](https://qdrant.tech/documentation/concepts/search/#acorn-search-algorithm) for higher-quality filtered HNSW queries  
+• [Score-Boosting Reranking](https://qdrant.tech/documentation/search/search-relevance/#score-boosting) allowing the blending of vector similarity with business signals  
+• [Full-Text Filtering](https://qdrant.tech/documentation/search/filtering/) which brought native multilingual tokenization, stemming, and phrase matching  
+• [ACORN algorithm](https://qdrant.tech/documentation/search/search/#acorn-search-algorithm) for higher-quality filtered HNSW queries  
 • [Maximal Marginal Relevance (MMR)](https://qdrant.tech/blog/mmr-diversity-aware-reranking/) to balance relevance and diversity  
 • ASCII folding for improved multilingual recall
 
@@ -57,19 +57,19 @@ In 2025, we focused on giving teams explicit control over retrieval quality as a
 To support large, cost-sensitive workloads, we targeted the biggest performance bottlenecks in production systems.  New improvements help teams scale indexing and querying without over-provisioning memory or compute.
 
 **Related enhancements:**  
-• [GPU-Accelerated HNSW Indexing](https://qdrant.tech/documentation/guides/running-with-gpu/) unlocks up to an order-of-magnitude faster ingestion  
-• [Inline Storage](https://qdrant.tech/documentation/guides/optimize/#inline-storage-in-hnsw-index) embedded quantized vectors directly into the graph to dramatically improve disk-based search performance  
+• [GPU-Accelerated HNSW Indexing](https://qdrant.tech/documentation/ops-configuration/running-with-gpu/) unlocks up to an order-of-magnitude faster ingestion  
+• [Inline Storage](https://qdrant.tech/documentation/ops-optimization/optimize/#inline-storage-in-hnsw-index) embedded quantized vectors directly into the graph to dramatically improve disk-based search performance  
 • [Custom storage engine](https://qdrant.tech/articles/gridstore-key-value-storage/) optimized for predictable low-latency access  
 • [Incremental HNSW indexing](https://qdrant.tech/documentation/database-tutorials/bulk-upload/?q=incremental+hnsw#choose-an-indexing-strategy) for upsert-heavy workloads  
 • HNSW graph compression to reduce memory footprint  
-• Expanded [Quantization](https://qdrant.tech/documentation/guides/quantization/#15-bit-and-2-bit-quantization]) options, including 1.5-bit, 2-bit, and asymmetric quantization
+• Expanded [Quantization](https://qdrant.tech/documentation/manage-data/quantization/#15-bit-and-2-bit-quantization]) options, including 1.5-bit, 2-bit, and asymmetric quantization
 
 ### Enterprise Scaling & Isolation
 
 As Qdrant became shared infrastructure inside larger organizations, we focused on multitenancy, governance, and enterprise needs. 
 
 **Related enhancements:**  
-• [Tiered Multitenancy](https://qdrant.tech/documentation/guides/multitenancy/#tiered-multitenancy) enables efficient support for both small and large tenants within a single system  
+• [Tiered Multitenancy](https://qdrant.tech/documentation/manage-data/multitenancy/#tiered-multitenancy) enables efficient support for both small and large tenants within a single system  
 • [Single Sign-On (SSO) and role-based access control (RBAC)](https://qdrant.tech/enterprise-solutions/)  
 • Granular database API keys  
 • [Terraform-enabled Cloud API](https://qdrant.tech/enterprise-solutions/) for automation and governance  
@@ -130,7 +130,7 @@ The progress in 2025 was shaped by real feedback and real use cases from the com
 • **Advanced Agent Retrieval**: relevance feedback, expanded inference capabilities  
 • **Robust Enterprise Deployment**: fully scalable multitenancy, faster horizontal scaling, read-only replicas
 
-If you’re building the next generation of intelligent applications, or the infrastructure that supports them, Qdrant is ready. [Explore open roles](https://join.com/companies/qdrant) on our team or [start a free instance on Qdrant Cloud](https://cloud.qdrant.io/login) today. 
+If you’re building the next generation of intelligent applications, or the infrastructure that supports them, Qdrant is ready. [Explore open roles](https://qdrant.to/jobs) on our team or [start a free instance on Qdrant Cloud](https://cloud.qdrant.io/login) today. 
 
 ![team](/blog/2025-recap/2025-team.png)
 

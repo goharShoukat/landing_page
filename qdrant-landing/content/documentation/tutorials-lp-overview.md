@@ -1,11 +1,11 @@
 ---
 title: Overview
-weight: 16
+weight: 405
 is_empty: false
 aliases:
   - how-to
   - tutorials
-partition: qdrant
+partition: develop
 ---
 
 # Qdrant Tutorial Repository
@@ -35,6 +35,13 @@ partition: qdrant
 *Core tools and APIs for building with Qdrant.*
 
 {{% include "content/documentation/headless/content/tutorials/develop.md" %}}
+
+---
+
+### Migrate to Qdrant
+*Move your vectors from other databases and keep them in sync.*
+
+{{% include "content/documentation/headless/content/tutorials/migrate.md" %}}
 
 <!-- KEEP BELOW FOR REFERENCE -->
 <!-- 
@@ -90,8 +97,8 @@ partition: qdrant
 | [Snapshots](/documentation/tutorials-operations/create-snapshot/) | Create and restore collection snapshots. | <span class="pill">Python</span> | 20m | <span class="text-green">Beginner</span> |
 | [Cloud Inference Hybrid Search](/documentation/tutorials-and-examples/cloud-inference-hybrid-search/) | Hybrid search using Qdrant's built-in inference. | <span class="pill">Any</span> | 20m | <span class="text-green">Beginner</span> |
 | [Data Migration](/documentation/tutorials-operations/migration/) | Move dense and sparse embeddings to Qdrant. | <span class="pill">CLI</span> | 30m | <span class="text-yellow">Intermediate</span> |
-| [Qdrant Cloud Prometheus Monitoring](/documentation/tutorials-and-examples/managed-cloud-prometheus/) | Observability with Prometheus and Grafana. | <span class="pill">Prometheus</span> | 30m | <span class="text-yellow">Intermediate</span> |
-| [Self-Hosted Prometheus Monitoring](/documentation/tutorials-and-examples/hybrid-cloud-prometheus/) | Observability for hybrid/private cloud setups. | <span class="pill">Prometheus</span> | 30m | <span class="text-yellow">Intermediate</span> |
+| [Qdrant Cloud Prometheus Monitoring](/documentation/ops-monitoring/managed-cloud-prometheus/) | Observability with Prometheus and Grafana. | <span class="pill">Prometheus</span> | 30m | <span class="text-yellow">Intermediate</span> |
+| [Self-Hosted Prometheus Monitoring](/documentation/ops-monitoring/hybrid-cloud-prometheus/) | Observability for hybrid/private cloud setups. | <span class="pill">Prometheus</span> | 30m | <span class="text-yellow">Intermediate</span> |
 | [Large-Scale Search](/documentation/tutorials-operations/large-scale-search/) | Cost-efficient search for LAION-400M datasets. | <span class="pill">None</span> | 2 days | <span class="text-red">Advanced</span> |
 
 ---

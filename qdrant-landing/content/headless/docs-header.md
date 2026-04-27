@@ -8,16 +8,16 @@ startFree:
 logoLink: /
 menuItems:
   - id: menu-0
-    name: Qdrant
+    name: Develop
     url: /documentation/
     icon: menu-documentation-white.svg
   - id: menu-1
-    name: Cloud
-    url: /documentation/cloud-intro/
+    name: Deploy
+    url: /documentation/deploy-intro/
     icon: cloud-white.svg
   - id: menu-2
-    name: Build
-    url: /documentation/build/
+    name: Ecosystem
+    url: /documentation/ecosystem/
     icon: blog-white.svg
   - id: menu-3
     name: Learn

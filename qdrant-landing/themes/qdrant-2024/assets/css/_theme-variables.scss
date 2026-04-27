@@ -28,6 +28,7 @@ $secondary-blue-30: #0040a1;
 $secondary-blue-50: #2f6ff0;
 $secondary-blue-70: #89a9ff;
 $secondary-blue-90: #d9e2fe;
+$secondary-blue-95: #f5f8ff;
 
 $secondary-violet-10: #24005b;
 $secondary-violet-30: #5700c9;
@@ -83,6 +84,9 @@ $theme-colors: (
   'light': $neutral-98,
   'mid-gray': $neutral-94,
   'dark': $neutral-20,
+  'teal': $secondary-teal-50,
+  'violet': $secondary-violet-50,
+  'blue': $secondary-blue-50,
 );
 
 $body-bg: $neutral-98;
@@ -109,10 +113,12 @@ $table-striped-bg: $neutral-94;
 
 $font-family-sans-serif: 'Mona Sans', 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif,
   'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-$font-family-monospace: 'Geist Mono', 'Overpass Mono', SFMono-Regular, 'Droid Sans Mono', Menlo, Monaco, Consolas,  'Lucida Console', 'Monaco', monospace;
+$font-family-monospace: 'Geist Mono', 'Overpass Mono', SFMono-Regular, 'Droid Sans Mono', Menlo, Monaco, Consolas,
+  'Lucida Console', 'Monaco', monospace;
 $font-family-base: 'Mona Sans', 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji',
   'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-$font-family-code: 'Geist Mono', 'Overpass Mono', SFMono-Regular, 'Droid Sans Mono', Menlo, Monaco, Consolas,  'Lucida Console', 'Monaco', monospace;
+$font-family-code: 'Geist Mono', 'Overpass Mono', SFMono-Regular, 'Droid Sans Mono', Menlo, Monaco, Consolas,
+  'Lucida Console', 'Monaco', monospace;
 
 $font-size-xs: pxToRem(12);
 $font-size-s: pxToRem(14);
@@ -132,15 +138,15 @@ $font-sizes-text: (
 $font-size-sm: $font-size-s;
 $font-size-lg: $font-size-l;
 
-$font-weight-lighter:         lighter !default;
-$font-weight-light:           300 !default;
-$font-weight-normal:          350 !default;
-$font-weight-medium:          500 !default;
-$font-weight-semibold:        600 !default;
-$font-weight-bold:            700 !default;
-$font-weight-bolder:          bolder !default;
+$font-weight-lighter: lighter !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 350 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+$font-weight-bolder: bolder !default;
 
-$font-weight-base:            $font-weight-normal !default;
+$font-weight-base: $font-weight-normal !default;
 
 $line-height-sm: pxToRem(21);
 $line-height-lg: pxToRem(27);
@@ -210,3 +216,15 @@ $spacers: (
 $code-snippet-border-radius: $border-radius * 2;
 
 $post-content-width: pxToRem(920);
+
+$grid-breakpoints: (
+  xxs: 0,
+  xs: 375px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1900px,
+);
+@include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
+@include _assert-starts-at-zero($grid-breakpoints, '$grid-breakpoints');

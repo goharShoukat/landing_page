@@ -1,9 +1,9 @@
 ---
 title: Managed Cloud
-weight: 15
+weight: 220
 aliases:
   - /documentation/overview/qdrant-alternatives/documentation/cloud/
-partition: cloud
+partition: deploy
 ---
 
 # About Qdrant Managed Cloud
@@ -21,6 +21,7 @@ Each database cluster comes with the following features:
 - Allows the creation of highly available clusters with automatic failover
 - Easy version upgrades, zero-downtime on highly available clusters
 - Monitoring, logging and alerting to observe the health of each cluster
+- Audit logging to track all operations in your clusters and collections
 - Horizontal and vertical up and down scaling
 - Automatic shard rebalancing
 - Support for resharding

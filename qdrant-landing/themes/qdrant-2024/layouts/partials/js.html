@@ -7,7 +7,12 @@
 
 <!-- OneTrust Cookies Consent Notice start for local.qdrant.tech -->
 {{ if .Site.Params.onetrustScriptID }}
-  <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="{{ .Site.Params.onetrustScriptID }}" ></script>
+  <script
+    src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+    type="text/javascript"
+    charset="UTF-8"
+    data-domain-script="{{ .Site.Params.onetrustScriptID }}"
+  ></script>
   <script async type="text/javascript">
     function OptanonWrapper() {
       const onetrustAnalyticsChoice = new CustomEvent('onetrust_loaded');
@@ -36,6 +41,7 @@
   </script>
 {{ end }}
 
+
 <!--Google Measurement ID-->
 {{ $googleJs := resources.Get "js/google-setup.js" | js.Build (dict "params" (dict "gaMeasurementId" .Site.Config.Services.GoogleAnalytics.ID)) | minify | resources.Fingerprint "sha512" }}
 <script src="{{ $googleJs.RelPermalink }}"></script>
@@ -43,7 +49,18 @@
 {{ $indexJs := resources.Get "/js/index.js" | js.Build | minify | resources.Fingerprint "sha512" }}
 <script src="{{ $indexJs.RelPermalink }}"></script>
 
+{{ if eq .Section "pricing" }}
+  {{ $pricingTableJs := resources.Get "/js/pricing-table.js" | js.Build | minify | resources.Fingerprint "sha512" }}
+  <script src="{{ $pricingTableJs.RelPermalink }}"></script>
+{{ end }}
+
 {{ if .IsHome }}
+  {{ $homeAnimationsJs := resources.Get "/js/home-animations.js" | js.Build | minify | resources.Fingerprint "sha512" }}
+  <script src="{{ $homeAnimationsJs.RelPermalink }}"></script>
+
+  {{ $scrollRevealJs := resources.Get "/js/scroll-reveal.js" | js.Build | minify | resources.Fingerprint "sha512" }}
+  <script src="{{ $scrollRevealJs.RelPermalink }}"></script>
+
   <!--splide.js carousel-->
   {{ $splideJs := resources.Get "/js/vendor/splide.js" | js.Build | minify | resources.Fingerprint "sha512" }}
   <script src="{{ $splideJs.RelPermalink }}"></script>
@@ -85,7 +102,7 @@
   </script>
 {{ end }}
 
-{{ if or (in (slice "docs" "documentation" "articles" "course" "learn") .Section) (and (not .IsPage) (eq .Section "blog")) }}
+{{ if or (in (slice "docs" "documentation" "articles" "course" "learn" "customers") .Section) (and (not .IsPage) (eq .Section "blog")) }}
   {{ $pageSearchJs := resources.Get "/js/search/search.js" | js.Build | minify | resources.Fingerprint "sha512" }}
   <script src="{{ $pageSearchJs.RelPermalink }}" type="module"></script>
 {{ end }}
@@ -93,6 +110,11 @@
 {{ if and .IsPage (in (slice "blog" "articles" "course" "learn" "benchmarks" "docs" "documentation") .Section) }}
   {{ $pageSearchScrollJs := resources.Get "/js/search/scroll.js" | js.Build | minify | resources.Fingerprint "sha512" }}
   <script src="{{ $pageSearchScrollJs.RelPermalink }}"></script>
+{{ end }}
+
+{{ if eq .Section "customers" }}
+  {{ $customersJs := resources.Get "js/customers-filters.js" | js.Build | minify | resources.Fingerprint "sha512" }}
+  <script src="{{ $customersJs.RelPermalink }}"></script>
 {{ end }}
 
 {{ if in (slice "blog" "articles" "course" "learn" "benchmarks" "docs" "documentation") .Section }}
@@ -128,7 +150,7 @@
 
     window.addEventListener('load', (event) => {
       document.querySelectorAll('mjx-container').forEach(function (x) {
-        x.parentElement.classList += 'has-jax';
+        x.parentElement.classList.add('has-jax');
       });
     });
   </script>
@@ -137,7 +159,7 @@
   <script src="{{ $anchorJs.RelPermalink }}"></script>
 {{ end }}
 
-{{ if in (slice "blog" "docs" "documentation" "articles" "course" "learn") .Section }}
+{{ if in (slice "blog" "docs" "documentation" "articles" "course" "learn" "customers") .Section }}
   <script>
     document.addEventListener('keydown', function (event) {
       if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
@@ -153,27 +175,22 @@
 
 {{ if and (eq .Section "blog") (.IsPage) }}
   <script>
-    document.addEventListener("scroll", () => {
-      const article = document.getElementById("article");
-      const progress = document.getElementById("progress");
+    document.addEventListener('scroll', () => {
+      const article = document.getElementById('article');
+      const progress = document.getElementById('progress');
 
       const articleHeight = article.scrollHeight - window.innerHeight;
       const scrollTop = window.scrollY - article.offsetTop;
 
-      progress.value = Math.min(
-        Math.max((scrollTop / articleHeight) * 100, 0),
-        100
-      );
+      progress.value = Math.min(Math.max((scrollTop / articleHeight) * 100, 0), 100);
     });
   </script>
 {{ end }}
 
+
 <script>
-  window.addEventListener("message", event => {
-    if (
-            event.data.type === "hsFormCallback" &&
-            event.data.eventName === "onFormReady"
-    ) {
+  window.addEventListener('message', (event) => {
+    if (event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormReady') {
       const formEl = document.querySelector(`form[data-form-id="${event.data.id}"]`);
       if (formEl) {
         const hiddenCurrentUrl = formEl.querySelector('[name="last_form_fill_url"]');
