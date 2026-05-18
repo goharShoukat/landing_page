@@ -1,5 +1,7 @@
 ---
 title: Hybrid Queries
+short_description: "Combine dense, sparse, and multivector queries in Qdrant with hybrid search and multi-stage Universal Query pipelines."
+description: "Run hybrid and multi-stage queries in Qdrant — fuse dense, sparse, and multivector results with RRF or DBSF using the Universal Query API for hybrid search."
 weight: 15
 aliases:
   - ../hybrid-queries
@@ -133,3 +135,5 @@ REST API ([Schema](https://api.qdrant.tech/master/api-reference/search/query-poi
 {{< code-snippet path="/documentation/headless/snippets/query-groups/basic/" >}}
 
 For more information on the `grouping` capabilities refer to the reference documentation for search with [grouping](/documentation/search/search/#search-groups) and [lookup](/documentation/search/search/#lookup-in-groups).
+
+**See also:** the [Multi-Representation Search](/documentation/tutorials-search-engineering/multi-representation-search/) tutorial for a worked end-to-end example of grouping in a hybrid retrieval pipeline.

@@ -1,5 +1,7 @@
 ---
 title: Text Search
+short_description: "Combine semantic vector search with lexical text features in Qdrant, including BM25 and full-text payload filters."
+description: "Run text search in Qdrant by mixing semantic vector retrieval with BM25 lexical search and full-text payload filters for robust hybrid search experiences."
 weight: 25
 aliases:
   - ../text-search
@@ -182,7 +184,7 @@ Qdrant provides native support for BM25 through an [inference model](/documentat
 
 The BM25 model supports the same [text processing](#text-processing) options as text indices, including tokenization, lowercasing, ASCII folding, stemming, and stopword removal. A notable difference with text indices is that BM25 defaults to English stemming and stopword removal. If you are using a language other than English, ensure that you [configure](#language-specific-settings) the model accordingly.
 
-To use BM25, configure a sparse vector when creating a collection:
+To use BM25, configure a sparse vector:
 
 {{< code-snippet path="/documentation/headless/snippets/text-search/create-bm25-collection/" >}}
 
@@ -207,6 +209,8 @@ The BM25 [ranking function](https://en.wikipedia.org/wiki/Okapi_BM25#The_ranking
 For instance, book titles are generally shorter than 256 words. To achieve more accurate scoring when searching for book titles, you could calculate or estimate the average title length and set the `avg_len` parameter accordingly:
 
 {{< code-snippet path="/documentation/headless/snippets/text-search/ingest-bm25-avglen/" >}}
+
+When designing a multi-representation collection (combining short fields like titles and tags with longer body text), the practical default is BM25 on the shorter, structured fields with dense vectors carrying the longer ones. BM25F is the principled extension for multi-field text of varying length; Qdrant doesn't support it natively today, but the [Multi-Representation Search](/documentation/tutorials-search-engineering/multi-representation-search/) tutorial shows the workaround: separate sparse vectors per field, fused via the Query API.
 
 #### Language-specific Settings
 

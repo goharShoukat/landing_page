@@ -1,5 +1,7 @@
 ---
 title: Create a Cluster
+short_description: "Create a Qdrant cluster in Hybrid Cloud with Kubernetes scheduling controls, node selectors, and secret-based API key authentication."
+description: "Create a production-ready Qdrant cluster in Hybrid Cloud with Kubernetes scheduling controls, node selectors, and secret-based API key authentication."
 weight: 10
 ---
 
@@ -96,7 +98,7 @@ The service type and necessary annotations can be configured in the "Kubernetes 
 
 ![Hybrid Cloud API Key configuration](/documentation/cloud/hybrid_cloud_service.png)
 
-Especially if you create a LoadBalancer Service, you may need to provide annotations for the loadbalancer configration. Please refer to the documention of your cloud provider for more details.
+Especially if you create a LoadBalancer Service, you may need to provide annotations for the loadbalancer configuration. Please refer to the documentation of your cloud provider for more details.
 
 Examples:
 

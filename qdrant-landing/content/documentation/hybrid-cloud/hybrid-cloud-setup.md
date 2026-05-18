@@ -1,5 +1,7 @@
 ---
 title: Setup Hybrid Cloud
+short_description: "Set up a Qdrant Hybrid Cloud Environment by installing the Operator and Cloud Agent into your own Kubernetes cluster."
+description: "Onboard a Kubernetes cluster as a Qdrant Hybrid Cloud Environment by installing the Operator and Cloud Agent with the required storage and permissions."
 weight: 5
 ---
 
@@ -65,7 +67,7 @@ By default, Qdrant Cloud will provision two volumes per Qdrant Pod: One for the 
 - Helm chart repository URL for the Qdrant services. The default is <oci://registry.cloud.qdrant.io/qdrant-charts>.
 - An optional secret with credentials to access your own container registry.
 - Log level for the operator and agent.
-- Node selectors and tolerations for the operater, agent, cluster-manager and monitoring stack.
+- Node selectors and tolerations for the operator, agent, cluster-manager and monitoring stack.
 - Control Plane Labels that will be added to all Kubernetes resources of the Hybrid Cloud control-plane components.
 
 ![Create Hybrid Cloud Environment - Advanced Configuration](/documentation/cloud/hybrid_cloud_advanced_configuration.png)
