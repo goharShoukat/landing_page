@@ -79,7 +79,7 @@ Yes, in most Retrieval-Augmented Generation (RAG) setups, each chunk is stored a
 
 How you chunk matters significantly and is domain-dependent. As a starting point: paragraph-level chunking works well for books and prose; sentence-level chunking tends to work better for technical articles and Q\&A content. Plan to experiment — chunking strategy is one of the highest-leverage variables in retrieval quality.
 
-See also: [Text Chunking Strategies](course/essentials/day-1/chunking-strategies/)
+See also: [Text Chunking Strategies](/course/essentials/day-1/chunking-strategies/)
 
 ### How does point deletion work internally? Does Qdrant rebuild the index on every delete?
 
@@ -116,7 +116,7 @@ You are likely looking for the [scroll](/documentation/manage-data/points/#scrol
 
 Add a [payload index](/documentation/manage-data/indexing/#payload-index) on all the fields you're filtering by. Payload indexing often produces larger speedups for filtered queries than other optimizations such as changes to Hierarchical Navigable Small World (HNSW) parameters.
 
-For best results, create payload indexes **before** uploading data. When uploading data later, rebuild the HNSW index by making a minimal change to `m` or `ef_construct` (for example, from 100 to 101). Queries continue to be served by the old index until the new index is complete, so there is no downtime. Don't immediately change the value of `ef_construct` back to its original value, but keep it set to the new value.
+For best results, create payload indexes **before** uploading data. When uploading data later, rebuild the HNSW index by [making a minimal change](/documentation/manage-data/indexing/#rebuild-the-hnsw-index) to `m` or `ef_construct` (for example, from 100 to 101). Queries continue to be served by the old index until the new index is complete, so there is no downtime. Don't immediately change the value of `ef_construct` back to its original value, but keep it set to the new value.
 
 To prevent clients from filtering on payload fields that don't have a payload index, enable strict mode and [set unindexed\_filtering\_retrieve to false](/documentation/ops-configuration/administration/#disable-retrieving-via-non-indexed-payload).
 
@@ -156,7 +156,7 @@ For custom fusion, use the [Formula Query](/documentation/search/search-relevanc
 
 To evaluate which works better for your use case, create a small golden query set and compare [retrieval quality metrics](/documentation/improve-search/retrieval-relevance/) (for example, NDCG@10) under each method.
 
-See also: [Hybrid Queries](/documentation/search/hybrid-queries/)
+See also: the [Choosing a Fusion Method](/documentation/search/hybrid-queries/#choosing-a-fusion-method) decision table in the Hybrid Queries reference, and the [Choosing a Fusion Method notebook](https://github.com/qdrant/examples/blob/master/fusion-methods/Choosing_a_Fusion_Method.ipynb) for a runnable RRF vs weighted RRF vs DBSF eval on BEIR/SciFact with a reusable weight-tuning helper.
 
 ### My hybrid search results aren't relevant. Where do I start debugging?
 
@@ -220,13 +220,17 @@ See also: [Named Vectors](/documentation/manage-data/vectors/#named-vectors)
 
 ### Can I switch to a different embedding model without recreating my collection?
 
-The recommended pattern is an alias-based swap:
+Yes, if you're using named vectors:
+
+1. [Add a new named vector](/documentation/manage-data/collections/#update-vector-schema) for the new model
+2. Re-embed points in the background
+3. Remove the old named vector when you're ready.
+
+If you don't use named vectors, you need to create a new collection. Use an alias-based swap for a zero-downtime migration:
 
 1. Create a new collection and ingest your data re-embedded with the new model.  
 2. Once indexed, atomically update the [collection alias](/documentation/manage-data/collections/#collection-aliases) to point to the new collection.  
 3. Delete the old collection when you're confident the migration is stable.
-
-This gives you zero-downtime migrations and a rollback path.
 
 See also: [Migrate to a New Embedding Model](/documentation/tutorials-operations/embedding-model-migration/)
 
